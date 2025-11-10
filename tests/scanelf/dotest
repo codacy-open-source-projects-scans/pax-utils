@@ -1,0 +1,14 @@
+#!/bin/bash
+
+. "${0%/*}"/../lib.sh
+
+#
+# simple scanelf symbol checks
+#
+${MESON_EXE_WRAPPER} "${builddir}/scanelf" -qsmain -F'%s %f' \
+	"${builddir}"/scanelf > "${builddir}"/scanelf.simple
+testit scanelf.simple tests/scanelf/scanelf.simple.good
+
+
+
+exit ${ret}

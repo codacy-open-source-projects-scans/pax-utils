@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+	"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+	<!ENTITY reftail SYSTEM "@man_dir@/fragment/reftail">
+
+	<!ENTITY project "pax-utils">
+
+	<!ENTITY dumpelf   SYSTEM   "@man_dir@/dumpelf.docbook">
+	<!ENTITY pspax     SYSTEM     "@man_dir@/pspax.docbook">
+	<!ENTITY scanelf   SYSTEM   "@man_dir@/scanelf.docbook">
+	<!ENTITY scanmacho SYSTEM "@man_dir@/scanmacho.docbook">
+]>
+
+<book id="pax-utils" lang="en">
+
+<bookinfo>
+ <title>Documentation for pax-utils</title>
+
+ <authorgroup>
+  <author>
+   <firstname>Ned</firstname>
+   <surname>Ludd</surname>
+   <authorblurb><para>Maintainer</para></authorblurb>
+   <email>solar@gentoo.org</email>
+  </author>
+  <author>
+   <firstname>Mike</firstname>
+   <surname>Frysinger</surname>
+   <authorblurb><para>Maintainer</para></authorblurb>
+   <email>vapier@gentoo.org</email>
+  </author>
+  <author>
+   <firstname>Fabian</firstname>
+   <surname>Groffen</surname>
+   <authorblurb><para>Mach-O Maintainer</para></authorblurb>
+   <email>grobian@gentoo.org</email>
+  </author>
+ </authorgroup>
+
+ <releaseinfo>@version@</releaseinfo>
+</bookinfo>
+
+&dumpelf;
+&pspax;
+&scanelf;
+&scanmacho;
+
+</book>

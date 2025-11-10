@@ -1,0 +1,121 @@
+# Copyright 2024 Gentoo Foundation
+# Copyright 2024 Mike Frysinger <vapier@gentoo.org>
+# Copyright 2024 The ChromiumOS Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
+
+# https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+
+# https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file
+[tool.codespell]
+# eles: We use variable name as short for "elements".
+# Ned: Author's name.
+ignore-words-list = "eles,ned"
+
+# Imported from glibc.
+skip = "elf.h"
+
+
+# https://pycqa.github.io/isort/docs/configuration/options
+[tool.isort]
+py_version = "38"
+
+# Be compatible with `black` since it also matches what we want.
+profile = "black"
+
+line_length = 88
+length_sort = false
+force_single_line = true
+lines_after_imports = 2
+from_first = false
+case_sensitive = false
+force_sort_within_sections = true
+order_by_type = false
+
+# Allow importing multiple classes on a single line from these modules.
+# https://google.github.io/styleguide/pyguide#s2.2-imports
+single_line_exclusions = [
+	"abc",
+	"collections.abc",
+	"typing",
+]
+
+
+# https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+python_version = "3.8"
+
+
+# https://pylint.pycqa.org/en/latest/user_guide/usage/run.html
+[tool.pylint."MASTER"]
+py-version = "3.8"
+
+# List of plugins (as comma separated values of python modules names) to load,
+# usually to register additional checkers.
+load-plugins = [
+	"pylint.extensions.bad_builtin",
+	"pylint.extensions.check_elif",
+	"pylint.extensions.docstyle",
+	"pylint.extensions.overlapping_exceptions",
+	"pylint.extensions.redefined_variable_type",
+]
+
+# Run everything in parallel.
+jobs = 0
+
+# https://pylint.pycqa.org/en/latest/user_guide/messages/index.html
+[tool.pylint."MESSAGES CONTROL"]
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifier separated by comma (,) or put this option
+# multiple times (only on the command line, not in the configuration file where
+# it should appear only once).
+disable = [
+	"too-many-lines",
+	"too-many-branches",
+	"too-many-statements",
+	"too-few-public-methods",
+	"too-many-instance-attributes",
+	"too-many-public-methods",
+	"too-many-locals",
+	"too-many-arguments",
+	"fixme",
+	"invalid-name",
+]
+
+[tool.pylint."REPORTS"]
+reports = false
+score = false
+
+[tool.pylint."FORMAT"]
+max-line-length = 100
+indent-string = "    "
+
+[tool.pylint."BASIC"]
+bad-functions = [
+	"exit",
+	"filter",
+	"input",
+	"map",
+	"quit",
+]
+
+[tool.pylint."SIMILARITIES"]
+min-similarity-lines = 20
+
+[tool.pylint."VARIABLES"]
+dummy-variables-rgx = "_"
+
+[tool.pylint."DESIGN"]
+max-parents = 10
+
+[tool.pylint."IMPORTS"]
+deprecated-modules = [
+	"mox",
+	"optparse",
+]
